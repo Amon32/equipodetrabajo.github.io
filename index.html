@@ -1,192 +1,161 @@
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¡Feliz Cumpleaños Sthefany!</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(45deg, #ffd6e7, #c4f0ff, #ffecb3, #e6fffa, #f8e1ff, #ffcdd2);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      padding: 1rem;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff6b9e, #8e44ad, #3498db, #2ecc71);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    font-family: 'Arial', sans-serif;
+    perspective: 1000px;
+    overflow: hidden;
+  }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      text-align: center;
-      max-width: 500px;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(5px);
-    }
+  .falling-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-    h1 {
-      color: #ff69b4;
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      margin-bottom: 1rem;
-      animation: bounce 2s infinite;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
+  .falling-icon {
+    position: absolute;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    animation: fall linear infinite;
+    opacity: 0.7;
+  }
 
-    .message {
-      font-size: clamp(1rem, 3vw, 1.2rem);
-      color: #666;
-      margin: 1rem 0;
-      line-height: 1.6;
-      background: linear-gradient(45deg, #ff69b4, #9c27b0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: bold;
+  @keyframes fall {
+    to {
+      transform: translateY(100vh) rotate(360deg);
     }
+  }
 
-    .special-message {
-      color: #9c27b0;
-      font-weight: bold;
-      margin-top: 1.5rem;
-      font-size: clamp(1.1rem, 3.2vw, 1.3rem);
-      padding: 1rem;
-      background: linear-gradient(135deg, #fff5f8, #f3e5f5);
-      border-radius: 15px;
-      animation: glow 3s infinite;
-    }
+  .birthday-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transform: rotateX(10deg);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+  }
 
-    .giraffe {
-      width: min(300px, 80%);
-      height: 400px;
-      margin: 0 auto;
-      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
-    }
+  .title {
+    color: #ff6b9e;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+  }
 
-    .giraffe .head {
-      animation: headBob 3s infinite;
-      transform-origin: bottom center;
-    }
+  .biblical-message {
+    background: linear-gradient(45deg, #8e44ad, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 1.5rem 0;
+    line-height: 1.6;
+  }
 
-    .balloons {
-      position: absolute;
-      top: -50px;
-      right: 20px;
-      width: 100px;
-      animation: float 4s infinite;
-      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
-    }
+  .icons-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+  .icon {
+    font-size: 2rem;
+    animation: float 2s ease-in-out infinite alternate;
+  }
 
-    @keyframes headBob {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(5deg); }
-    }
+  .heart { color: #ff6b9e; }
+  .star { color: #f1c40f; }
+  .flower { color: #2ecc71; }
+  .rocket { color: #3498db; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-    }
-
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 5px rgba(156,39,176,0.2); }
-      50% { box-shadow: 0 0 20px rgba(156,39,176,0.4); }
-    }
-
-    .stars {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      left: 0;
-      top: 0;
-    }
-
-    .star {
-      animation: twinkle 1.5s infinite;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.8); }
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        padding: 1.5rem;
-      }
-      
-      .giraffe {
-        width: 70%;
-        height: 300px;
-      }
-    }
-  </style>
+  @keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-15px); }
+  }
+</style>
 </head>
 <body>
-  <div class="card">
-    <svg class="stars" viewBox="0 0 500 500">
-      <defs>
-        <path id="star" d="M10,5 L12,10 L17,10 L13,14 L15,19 L10,16 L5,19 L7,14 L3,10 L8,10 Z" fill="#FFD700"/>
-      </defs>
-      <use href="#star" x="50" y="40" class="star"/>
-      <use href="#star" x="150" y="60" class="star"/>
-      <use href="#star" x="250" y="30" class="star"/>
-      <use href="#star" x="350" y="70" class="star"/>
-      <use href="#star" x="100" y="90" class="star"/>
-      <use href="#star" x="200" y="20" class="star"/>
-      <use href="#star" x="300" y="50" class="star"/>
-    </svg>
+  <div id="falling-icons" class="falling-icons"></div>
+  
+  <div class="birthday-card">
+    <h1 class="title">¡Feliz Cumpleaños Sthefany!</h1>
     
-    <h1>¡Feliz Cumpleaños Sthefany!</h1>
-    
-    <svg class="giraffe" viewBox="0 0 200 300">
-      <g class="body">
-        <path d="M80,200 Q90,180 100,150 T120,80" stroke="#FFE5B5" stroke-width="20" fill="none"/>
-        <path d="M80,200 Q90,180 100,150 T120,80" stroke="#BA8C4B" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
-        <rect x="70" y="200" width="60" height="80" fill="#FFE5B5" rx="10"/>
-        <rect x="75" y="280" width="10" height="40" fill="#FFE5B5"/>
-        <rect x="115" y="280" width="10" height="40" fill="#FFE5B5"/>
-      </g>
-      
-      <g class="head">
-        <ellipse cx="120" cy="80" rx="25" ry="35" fill="#FFE5B5"/>
-        <circle cx="130" cy="70" r="5" fill="#333"/>
-        <path d="M110,90 Q120,95 130,90" stroke="#333" stroke-width="2" fill="none"/>
-        <circle cx="110" cy="75" r="4" fill="#BA8C4B"/>
-        <circle cx="125" cy="85" r="4" fill="#BA8C4B"/>
-        <circle cx="115" cy="95" r="4" fill="#BA8C4B"/>
-      </g>
-    </svg>
-
-    <svg class="balloons" viewBox="0 0 100 100">
-      <path d="M20,80 Q10,40 20,20 T40,20 T60,20 Q70,40 60,80 Z" fill="#FF69B4"/>
-      <path d="M40,80 Q30,40 40,20 T60,20 T80,20 Q90,40 80,80 Z" fill="#87CEEB"/>
-      <path d="M30,60 Q20,20 30,0 T50,0 T70,0 Q80,20 70,60 Z" fill="#FFB6C1"/>
-    </svg>
-
-    <div class="message">
-      ¡Que este día esté lleno de alegría, sonrisas y momentos inolvidables!
-      <br>
-      Que todos tus deseos se hagan realidad.
+    <div class="icons-container">
+      <i class="fas fa-heart icon heart"></i>
+      <i class="fas fa-star icon star"></i>
+      <i class="fas fa-flower icon flower"></i>
+      <i class="fas fa-rocket icon rocket"></i>
     </div>
 
-    <div class="special-message">
-      Dios te bendiga Hna, eres muy especial, te quiero en Cristo Jesús ✝️
+    <div class="biblical-message">
+      "Porque yo sé los planes que tengo para ti", dice el Señor, "planes de bienestar y no de calamidad, para darte un futuro y una esperanza." - Jeremías 29:11
     </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script>
+    function createFallingIcons() {
+      const fallingIconsContainer = document.getElementById('falling-icons');
+      const iconTypes = ['♥', '✦', '✿', '★'];
+      
+      function createIcon() {
+        const icon = document.createElement('div');
+        icon.classList.add('falling-icon');
+        icon.textContent = iconTypes[Math.floor(Math.random() * iconTypes.length)];
+        
+        // Random starting position
+        icon.style.left = `${Math.random() * 100}%`;
+        icon.style.fontSize = `${Math.random() * 2 + 1}rem`;
+        
+        fallingIconsContainer.appendChild(icon);
+        
+        // GSAP animation for more sophisticated falling
+        gsap.to(icon, {
+          y: window.innerHeight + 100,
+          rotation: Math.random() * 360,
+          duration: Math.random() * 5 + 3,
+          ease: 'linear',
+          onComplete: () => {
+            fallingIconsContainer.removeChild(icon);
+            createIcon();
+          }
+        });
+      }
+      
+      // Create initial set of falling icons
+      for (let i = 0; i < 30; i++) {
+        createIcon();
+      }
+    }
+
+    createFallingIcons();
+  </script>
 </body>
-</html></body></html>
+</html>
