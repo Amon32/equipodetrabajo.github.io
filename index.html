@@ -1,161 +1,287 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #ff6b9e, #8e44ad, #3498db, #2ecc71);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    font-family: 'Arial', sans-serif;
-    perspective: 1000px;
-    overflow: hidden;
-  }
-
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .falling-icons {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .falling-icon {
-    position: absolute;
-    font-size: 2rem;
-    color: rgba(255, 255, 255, 0.7);
-    animation: fall linear infinite;
-    opacity: 0.7;
-  }
-
-  @keyframes fall {
-    to {
-      transform: translateY(100vh) rotate(360deg);
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Feliz Cumpleaños Sthefany!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff6b9e, #8e44ad, #3498db, #2ecc71);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Arial', sans-serif;
+      perspective: 1000px;
+      overflow: hidden;
     }
-  }
 
-  .birthday-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    text-align: center;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    transform: rotateX(10deg);
-    backdrop-filter: blur(10px);
-    z-index: 10;
-  }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-  .title {
-    color: #ff6b9e;
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    margin-bottom: 1rem;
-  }
+    .falling-icons {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  .biblical-message {
-    background: linear-gradient(45deg, #8e44ad, #3498db);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin: 1.5rem 0;
-    line-height: 1.6;
-  }
+    .falling-icon {
+      position: absolute;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.7);
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
 
-  .icons-container {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1rem 0;
-  }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
 
-  .icon {
-    font-size: 2rem;
-    animation: float 2s ease-in-out infinite alternate;
-  }
+    .birthday-card {
+      background: linear-gradient(135deg, #FFD700, #32CD32, #FF69B4); /* Amarillo, Verde y Rosado */
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .heart { color: #ff6b9e; }
-  .star { color: #f1c40f; }
-  .flower { color: #2ecc71; }
-  .rocket { color: #3498db; }
+    .title {
+      color: white; /* Cambiado a blanco */
+      font-size: clamp(2rem, 5vw, 3rem);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      margin-bottom: .5rem; /* Espaciado ajustado */
+    }
 
-  @keyframes float {
-    from { transform: translateY(0); }
-    to { transform: translateY(-15px); }
-  }
+    .message-container {
+        transition: background-color .5s ease; /* Transición suave para el color */
+        padding: .5rem; /* Espaciado para el contenedor del mensaje */
+        border-radius: .5rem; /* Bordes redondeados */
+    }
+
+    .message {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        color: black;  
+    }
+
+    .special-message {
+        color: black;  
+        font-weight: bold;
+        margin-top:.5rem; /* Espaciado ajustado */
+    }
+
+    .bible-verse {
+        font-style: italic;
+        margin-top:.5rem; 
+        color:black;  
+        font-size: clamp(1rem,3vw ,1.2rem);
+        padding-top:.5rem; 
+        border-top:s solid thin #eee; 
+    }
+
+    .icons-container {
+        display:flex; 
+        justify-content:center; 
+        gap:.5rem; 
+        margin-bottom:.5rem; 
+    }
+
+    .icon {
+        font-size: clamp(1.5rem,4vw ,2.5rem); 
+    }
+    
+    .heart { color:#ff6b9e; }
+    .star { color:#f1c40f; }
+    .flower { color:#2ecc71; }
+    .rocket { color:#3498db; }
+
+    /* Jirafa */
+    .giraffe {
+        width:min(200px ,80%);
+        height:auto; 
+        margin-top:-20px; /* Ajustar según sea necesario */
+        filter : drop-shadow(0px5px rgba(0 ,0 ,0 ,.3));
+        animation-name:breathe; /* Animación de respiración */
+        animation-duration:.8s; /* Duración de la animación */
+        animation-timing-function:ease-in-out; /* Función de tiempo */
+        animation-iteration-count:inline; /* Repetir indefinidamente */
+    }
+
+   @keyframes breathe {
+       from { transform : scale(1); }
+       to { transform : scale(1.05); }
+   }
+
+   @media (max-width :480px) {
+       .birthday-card {
+           padding :1.5rem; 
+       }
+       
+       .giraffe {
+           width :min(150px ,70%);
+       }
+   }
+    
 </style>
 </head>
 <body>
-  <div id="falling-icons" class="falling-icons"></div>
   
-  <div class="birthday-card">
-    <h1 class="title">¡Feliz Cumpleaños Sthefany!</h1>
-    
-    <div class="icons-container">
-      <i class="fas fa-heart icon heart"></i>
-      <i class="fas fa-star icon star"></i>
-      <i class="fas fa-flower icon flower"></i>
-      <i class="fas fa-rocket icon rocket"></i>
-    </div>
+<div id="falling-icons" class="falling-icons"></div>
 
-    <div class="biblical-message">
-      "Porque yo sé los planes que tengo para ti", dice el Señor, "planes de bienestar y no de calamidad, para darte un futuro y una esperanza." - Jeremías 29:11
-    </div>
-  </div>
+<div class="birthday-card" id="birthdayCard">
+  
+   <h1 class="title">¡Feliz Cumpleaños Sthefany!</h1>
+   
+   <div class="icons-container">
+     <i class="fas fa-heart icon heart"></i>
+     <i class="fas fa-star icon star"></i>
+     <i class="fas fa-flower icon flower"></i>
+     <i class="fas fa-rocket icon rocket"></i>
+   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <script>
-    function createFallingIcons() {
-      const fallingIconsContainer = document.getElementById('falling-icons');
-      const iconTypes = ['♥', '✦', '✿', '★'];
-      
-      function createIcon() {
-        const icon = document.createElement('div');
-        icon.classList.add('falling-icon');
-        icon.textContent = iconTypes[Math.floor(Math.random() * iconTypes.length)];
-        
-        // Random starting position
-        icon.style.left = `${Math.random() * 100}%`;
-        icon.style.fontSize = `${Math.random() * 2 + 1}rem`;
-        
-        fallingIconsContainer.appendChild(icon);
-        
-        // GSAP animation for more sophisticated falling
-        gsap.to(icon, {
-          y: window.innerHeight + 100,
-          rotation: Math.random() * 360,
-          duration: Math.random() * 5 + 3,
-          ease: 'linear',
-          onComplete: () => {
-            fallingIconsContainer.removeChild(icon);
-            createIcon();
-          }
-        });
-      }
-      
-      // Create initial set of falling icons
-      for (let i = 0; i < 30; i++) {
-        createIcon();
-      }
-    }
+   <!-- Jirafa SVG -->
+   <svg class="giraffe" viewBox="0 -20 200 300">
+       <g class="body">
+           <path d="M80,200 Q90,180 100,150 T120,80" stroke="#FFE5B5" stroke-width="20" fill="none"/>
+           <rect x="70" y="200" width="60" height="80" fill="#FFE5B5" rx="10"/>
+           <rect x="75" y="280" width="10" height="40" fill="#FFE5B5"/>
+           <rect x="115" y="280" width="10" height="40" fill="#FFE5B5"/>
+       </g>
+       
+       <g class="head">
+           <ellipse cx="120" cy="80" rx="25" ry="35" fill="#FFE5B5"/>
+           <circle cx="130" cy="70" r="5" fill="#333"/>
+           <path d="M110,90 Q120,95 130,90" stroke="#333" stroke-width="2" fill="none"/>
+           <circle cx="110" cy="75" r="4" fill="#BA8C4B"/>
+           <circle cx="125" cy="85" r="4" fill="#BA8C4B"/>
+           <circle cx="115" cy="95" r="4" fill="#BA8C4B"/>
+       </g>
+   </svg>
 
-    createFallingIcons();
-  </script>
+   <!-- Mensaje que cambia -->
+   <div class="message-container">
+     <div class="message">¡Que este día esté lleno de alegría!</div>
+     <div class="special-message">Dios te bendiga Hna!</div>
+   </div>
+
+   <!-- Verso bíblico -->
+   <div class="bible-verse">
+     "Porque yo sé los planes que tengo para ti", dice el Señor,
+     "planes de bienestar y no de calamidad,
+     para darte un futuro y una esperanza." - Jeremías 29:11
+   </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+<script>
+// Mensajes para mostrar al girar
+const messages = [
+   { message:"¡Que este día esté lleno de alegría!", specialMessage:"Dios te bendiga Hna!" },
+   { message:"¡Disfruta cada momento!", specialMessage:"Eres una luz en nuestras vidas!" },
+   { message:"¡Sigue brillando!", specialMessage:"Tu sonrisa ilumina el mundo!" },
+   { message:"¡Celebra con amor!", specialMessage:"Eres muy especial para todos nosotros!" },
+];
+
+// Colores para el fondo del mensaje
+const colors = [
+   "#FFCCCB", // Rojo claro
+   "#FFDAB9", // Melocotón
+   "#E6E6FA", // Lavanda
+   "#FFFACD", // Amarillo claro
+];
+
+// Función para crear íconos que caen
+function createFallingIcons() {
+   const fallingIconsContainer = document.getElementById('falling-icons');
+   const iconTypes = ['♥', '✦', '✿', '★'];
+   
+   function createIcon() {
+       const icon = document.createElement('div');
+       icon.classList.add('falling-icon');
+       icon.textContent = iconTypes[Math.floor(Math.random() * iconTypes.length)];
+       
+       // Posición inicial aleatoria
+       icon.style.left = `${Math.random() * (100 - -100) + -100}%`;
+       icon.style.fontSize = `${Math.random() * (2 -1) +1}rem`;
+       
+       fallingIconsContainer.appendChild(icon);
+       
+       // Animación GSAP para caída
+       gsap.to(icon,{
+           y : window.innerHeight + Math.random() * (100 - -100) + -100,
+           rotation : Math.random() * (360 - -360) + -360,
+           duration : Math.random() * (5 -3) +3,
+           ease :'linear',
+           onComplete : () => {
+               fallingIconsContainer.removeChild(icon);
+               createIcon();
+           }
+       });
+   }
+   
+   // Crear conjunto inicial de íconos que caen
+   for (let i =0 ; i<30 ; i++) {
+       createIcon();
+   }
+}
+
+// Función para girar la tarjeta al hacer clic o deslizar
+function rotateCard(event) {
+   const card = document.getElementById('birthdayCard');
+   
+   // Obtener las coordenadas del clic o del toque
+   const x = event.clientX || event.touches[0].clientX; // Para dispositivos táctiles
+   const y = event.clientY || event.touches[0].clientY;
+
+   // Calcular la posición relativa al centro de la tarjeta
+   const cardRect = card.getBoundingClientRect();
+   
+   // Rotación máxima de ±180° para un giro más lento
+   const offsetX = ((x - cardRect.left) / cardRect.width) * (180); 
+
+   // Cambiar mensaje al girar
+   const randomIndex = Math.floor(Math.random() * messages.length);
+   document.querySelector('.message').textContent = messages[randomIndex].message;
+   document.querySelector('.special-message').textContent = messages[randomIndex].specialMessage;
+
+   // Cambiar color del contenedor del mensaje
+   const randomColorIndex = Math.floor(Math.random() * colors.length);
+   document.querySelector('.message-container').style.backgroundColor = colors[randomColorIndex];
+
+   // Aplicar transformación a la tarjeta
+   card.style.transform = `rotateY(${offsetX}deg)`;
+}
+
+// Restaurar posición original al soltar el clic o el toque
+function resetCardPosition() {
+   const card = document.getElementById('birthdayCard');
+   card.style.transform = 'rotateY(0deg)';
+}
+
+// Agregar eventos de clic y toque a la tarjeta
+const birthdayCard = document.getElementById('birthdayCard');
+birthdayCard.addEventListener('mousedown', rotateCard);
+birthdayCard.addEventListener('touchstart', rotateCard);
+birthdayCard.addEventListener('mouseup', resetCardPosition);
+birthdayCard.addEventListener('touchend', resetCardPosition);
+
+createFallingIcons();
+</script>
 </body>
 </html>
