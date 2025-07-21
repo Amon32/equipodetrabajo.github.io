@@ -3,883 +3,622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulación de Mecanizado 3D</title>
+    <meta name="description" content="Página oficial del equipo IF01-T3 - Conoce a nuestros miembros">
+    <title>Equipo IF01-T3 | Profesionales en Tecnología</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #f1c40f;
-            --dark-bg: #0a0e17;
-            --light-text: #ecf0f1;
+            --primary: #4a6bff;
+            --secondary: #6e48aa;
+            --dark: #2d3748;
+            --light: #f7fafc;
+            --gray: #e2e8f0;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --danger: #f56565;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
-        
-        body {
+
+        * {
             margin: 0;
-            overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--dark-bg);
-            color: var(--light-text);
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        #ui-container {
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 100;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
         }
-        
-        #header {
-            position: absolute;
-            top: 20px;
-            left: 0;
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 4rem 0;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .member-card:hover .member-image {
+            opacity: 0.9;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .member-position {
+            display: inline-block;
+            background: rgba(74, 107, 255, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .member-bio {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
             width: 100%;
             text-align: center;
         }
-        
-        #title {
-            display: inline-block;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .view-btn:hover {
+            background: var(--secondary);
         }
-        
-        #controls-panel {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            gap: 10px;
-            pointer-events: all;
-        }
-        
-        .control-btn {
-            background: linear-gradient(135deg, var(--primary-color), #2980b9);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .control-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .control-btn:active {
-            transform: translateY(0);
-        }
-        
-        .control-btn i {
-            font-size: 1.1rem;
-        }
-        
-        #info-panel {
-            position: absolute;
-            top: 80px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            max-width: 300px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            pointer-events: all;
-        }
-        
-        #info-panel h2 {
-            margin-top: 0;
-            color: var(--secondary-color);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 10px;
-        }
-        
-        #loading-screen {
+
+        /* Modal */
+        .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--dark-bg);
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 20px;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--danger);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            border: none;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: #c53030;
+        }
+
+        .modal-body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 1s ease-out;
+            padding: 2rem;
         }
-        
-        #loading-progress {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
-            border-radius: 2px;
-            overflow: hidden;
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
         }
-        
-        #progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            transition: width 0.3s ease;
+
+        .modal-info {
+            flex: 1;
         }
-        
-        #loading-text {
-            margin-top: 15px;
+
+        .modal-name {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-position {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .personal-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: rgba(74, 107, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .data-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: var(--dark);
+            display: block;
+            margin-bottom: 0.2rem;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
         }
-        
-        #assembly-btn {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
+
+        .data-value {
+            color: #555;
+            font-size: 0.95rem;
         }
-        
-        #wireframe-btn {
-            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+
+        .modal-bio {
+            margin-bottom: 2rem;
+            line-height: 1.7;
         }
-        
-        #debug-btn {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
-        
-        .tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 200;
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(74, 107, 255, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: var(--transition);
         }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
         }
-        
-        .pulse-animation {
-            animation: pulse 2s infinite;
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .modal-body {
+                flex-direction: row;
+                gap: 3rem;
+            }
+
+            .modal-image {
+                width: 300px;
+                height: 350px;
+                margin-bottom: 0;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .personal-data {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div id="loading-screen">
-        <h1>SIMULACIÓN DE MECANIZADO 3D</h1>
-        <div id="loading-progress">
-            <div id="progress-bar"></div>
+    <header>
+        <div class="header-content">
+            <h1>Equipo IF01-T3</h1>
+            <p class="subtitle">Profesionales en tecnología comprometidos con la excelencia y la innovación</p>
         </div>
-        <div id="loading-text">Cargando recursos 3D...</div>
-    </div>
-    
-    <div id="ui-container">
-        <div id="header">
-            <div id="title">
-                <i class="fas fa-cogs"></i> Simulación de Ensamblaje Mecánico
+    </header>
+
+    <main>
+        <section class="team-section">
+            <div class="container">
+                <h2 class="section-title">Nuestros Integrantes</h2>
+                <div class="members-grid" id="membersGrid">
+                    <!-- Miembros se cargarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal" id="memberModal">
+            <div class="modal-content">
+                <button class="close-modal" id="closeModal">&times;</button>
+                <div class="modal-body" id="modalBody">
+                    <!-- Contenido del modal se cargará dinámicamente -->
+                </div>
             </div>
         </div>
-        
-        <div id="info-panel">
-            <h2>Instrucciones</h2>
-            <p><i class="fas fa-mouse"></i> <strong>Rotar vista:</strong> Click izquierdo + arrastrar</p>
-            <p><i class="fas fa-arrows-alt"></i> <strong>Mover vista:</strong> Click derecho + arrastrar</p>
-            <p><i class="fas fa-search"></i> <strong>Zoom:</strong> Rueda del ratón</p>
-            <hr>
-            <p><i class="fas fa-info-circle"></i> Haz clic en los botones inferiores para controlar la simulación.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">IF01-T3</div>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Inicio</a>
+                    <a href="#" class="footer-link">Equipo</a>
+                    <a href="#" class="footer-link">Contacto</a>
+                </div>
+                <p class="copyright">© 2023 Equipo IF01-T3. Todos los derechos reservados.</p>
+            </div>
         </div>
-        
-        <div id="controls-panel">
-            <button id="rotate-btn" class="control-btn">
-                <i class="fas fa-sync-alt"></i> Rotación
-            </button>
-            <button id="assembly-btn" class="control-btn">
-                <i class="fas fa-puzzle-piece"></i> Ensamblar
-            </button>
-            <button id="wireframe-btn" class="control-btn">
-                <i class="fas fa-border-style"></i> Wireframe
-            </button>
-            <button id="debug-btn" class="control-btn">
-                <i class="fas fa-bug"></i> Debug
-            </button>
-        </div>
-    </div>
-    
-    <div class="tooltip" id="tooltip"></div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/OutlinePass.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/FXAAShader.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.min.js"></script>
-    
+    </footer>
+
     <script>
-        // Simular progreso de carga
-        const progressBar = document.getElementById('progress-bar');
-        const loadingText = document.getElementById('loading-text');
-        const loadingScreen = document.getElementById('loading-screen');
-        
-        const loadSteps = [
-            "Inicializando motor 3D...",
-            "Cargando texturas...",
-            "Compilando shaders...",
-            "Generando geometrías...",
-            "Configurando iluminación...",
-            "Preparando simulación..."
+        // Datos del equipo
+        const teamMembers = [
+            {
+                id: 1,
+                name: "Isaac Cova",
+                position: "Desarrollador Fullstack",
+                bio: "Isaac es un desarrollador fullstack con 5 años de experiencia en tecnologías web modernas. Especializado en JavaScript, React y Node.js, ha liderado el desarrollo de múltiples aplicaciones empresariales. Apasionado por la arquitectura de software limpia y las buenas prácticas de desarrollo.",
+                cedula: "26.070.563",
+                fechaNacimiento: "15 de marzo de 1990",
+                telefono: "+58 412-5551234",
+                seccion: "IF01-T3",
+                image: "isaac.jpg",
+                social: [
+                    { icon: "linkedin", url: "#" },
+                    { icon: "github", url: "#" },
+                    { icon: "twitter", url: "#" },
+                    { icon: "envelope", url: "mailto:isaac@example.com" }
+                ]
+            },
+            {
+                id: 2,
+                name: "Neomar Mejías",
+                position: "Diseñador UX/UI",
+                bio: "Neomar combina su formación en diseño gráfico con un máster en Experiencia de Usuario para crear interfaces intuitivas y hermosas. Con 4 años de experiencia en diseño de productos digitales, ha trabajado con startups y grandes empresas, siempre enfocado en resolver problemas reales de los usuarios.",
+                cedula: "31.468.431",
+                fechaNacimiento: "22 de julio de 1988",
+                telefono: "+58 414-5555678",
+                seccion: "IF01-T3",
+                image: "neomar.jpg",
+                social: [
+                    { icon: "linkedin", url: "#" },
+                    { icon: "behance", url: "#" },
+                    { icon: "dribbble", url: "#" },
+                    { icon: "envelope", url: "mailto:neomar@example.com" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Alejandro Medina",
+                position: "Ingeniero de Sistemas",
+                bio: "Alejandro es ingeniero de sistemas con especialización en bases de datos y arquitecturas escalables. Con certificaciones en AWS y Google Cloud, ha implementado soluciones en la nube para empresas de diversos sectores. Su enfoque metódico y atención al detalle garantizan sistemas robustos y confiables.",
+                cedula: "28.291.142",
+                fechaNacimiento: "10 de noviembre de 1992",
+                telefono: "+58 416-5559012",
+                seccion: "IF01-T3",
+                image: "alejandro.jpg",
+                social: [
+                    { icon: "linkedin", url: "#" },
+                    { icon: "github", url: "#" },
+                    { icon: "aws", url: "#" },
+                    { icon: "envelope", url: "mailto:alejandro@example.com" }
+                ]
+            }
         ];
-        
-        let currentStep = 0;
-        const loadInterval = setInterval(() => {
-            currentStep++;
-            const progress = (currentStep / loadSteps.length) * 100;
-            progressBar.style.width = `${progress}%`;
-            loadingText.textContent = loadSteps[currentStep - 1];
+
+        // DOM Elements
+        const membersGrid = document.getElementById('membersGrid');
+        const memberModal = document.getElementById('memberModal');
+        const modalBody = document.getElementById('modalBody');
+        const closeModal = document.getElementById('closeModal');
+
+        // Render team members
+        function renderTeamMembers() {
+            membersGrid.innerHTML = '';
             
-            if (currentStep >= loadSteps.length) {
-                clearInterval(loadInterval);
-                setTimeout(() => {
-                    loadingScreen.style.opacity = '0';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 1000);
-                }, 500);
-            }
-        }, 500);
-        
-        // 1. Configuración avanzada de Three.js
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x050510);
-        scene.fog = new THREE.FogExp2(0x050510, 0.001);
-        
-        // 2. Configuración de cámara
-        const camera = new THREE.PerspectiveCamera(
-            55, 
-            window.innerWidth / window.innerHeight, 
-            0.1, 
-            1000
-        );
-        camera.position.set(0, 3, 8);
-        
-        // 3. Renderizador avanzado
-        const renderer = new THREE.WebGLRenderer({ 
-            antialias: true,
-            powerPreference: "high-performance"
-        });
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.2;
-        renderer.outputEncoding = THREE.sRGBEncoding;
-        document.body.appendChild(renderer.domElement);
-        
-        // 4. Controles de cámara
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.screenSpacePanning = false;
-        controls.minDistance = 3;
-        controls.maxDistance = 20;
-        controls.maxPolarAngle = Math.PI * 0.9;
-        
-        // 5. Sistema de iluminación profesional
-        const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-        scene.add(ambientLight);
-        
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
-        directionalLight.position.set(5, 10, 7);
-        directionalLight.castShadow = true;
-        directionalLight.shadow.mapSize.width = 2048;
-        directionalLight.shadow.mapSize.height = 2048;
-        directionalLight.shadow.camera.near = 0.5;
-        directionalLight.shadow.camera.far = 50;
-        directionalLight.shadow.bias = -0.001;
-        scene.add(directionalLight);
-        
-        const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 0.5);
-        scene.add(hemisphereLight);
-        
-        const pointLight1 = new THREE.PointLight(0xff3333, 0.8, 10);
-        pointLight1.position.set(2, 3, 4);
-        scene.add(pointLight1);
-        
-        const pointLight2 = new THREE.PointLight(0x33ccff, 0.5, 15);
-        pointLight2.position.set(-3, 5, -5);
-        scene.add(pointLight2);
-        
-        // 6. Post-processing y efectos especiales
-        const composer = new THREE.EffectComposer(renderer);
-        const renderPass = new THREE.RenderPass(scene, camera);
-        composer.addPass(renderPass);
-        
-        const bloomPass = new THREE.UnrealBloomPass(
-            new THREE.Vector2(window.innerWidth, window.innerHeight),
-            1.5, 0.4, 0.85
-        );
-        bloomPass.threshold = 0;
-        bloomPass.strength = 0.5;
-        bloomPass.radius = 0.8;
-        composer.addPass(bloomPass);
-        
-        const outlinePass = new THREE.OutlinePass(
-            new THREE.Vector2(window.innerWidth, window.innerHeight),
-            scene,
-            camera
-        );
-        outlinePass.visibleEdgeColor.set(0xffff00);
-        outlinePass.hiddenEdgeColor.set(0x333333);
-        outlinePass.edgeStrength = 3.0;
-        outlinePass.edgeThickness = 1.0;
-        outlinePass.edgeGlow = 0.5;
-        composer.addPass(outlinePass);
-        
-        const fxaaPass = new THREE.ShaderPass(THREE.FXAAShader);
-        fxaaPass.uniforms['resolution'].value.set(
-            1 / window.innerWidth, 
-            1 / window.innerHeight
-        );
-        composer.addPass(fxaaPass);
-        
-        // 7. Materiales avanzados con texturas procedurales
-        const metalMaterial = new THREE.MeshStandardMaterial({
-            color: 0xdddddd,
-            metalness: 0.98,
-            roughness: 0.1,
-            envMapIntensity: 1,
-            side: THREE.DoubleSide
-        });
-        
-        const threadedMaterial = new THREE.MeshStandardMaterial({
-            color: 0xaaaaaa,
-            metalness: 0.95,
-            roughness: 0.4,
-            bumpScale: 0.1
-        });
-        
-        const steelMaterial = new THREE.MeshStandardMaterial({
-            color: 0x777777,
-            metalness: 0.9,
-            roughness: 0.3
-        });
-        
-        // 8. Modelado avanzado de tuerca con rosca realista mejorada
-        function createNut() {
-            const outerRadius = 1;
-            const innerRadius = 0.5; // Reducido para mejor ajuste
-            const height = 0.8; // Aumentado para mejor visualización
-            const segments = 6; // Hexagonal
-            
-            // Geometría exterior con bisel y chaflán
-            const outerGeometry = new THREE.CylinderGeometry(
-                outerRadius, 
-                outerRadius * 0.95, 
-                height, 
-                segments, 
-                1, 
-                true
-            );
-            
-            // Geometría interior con rosca mejorada
-            const innerGeometry = new THREE.CylinderGeometry(
-                innerRadius, 
-                innerRadius, 
-                height + 0.1, 
-                64 // Más segmentos para rosca más suave
-            );
-            
-            // Añadir rosca mejorada mediante deformación
-            const innerPositions = innerGeometry.attributes.position;
-            const threadDepth = 0.07; // Profundidad de rosca aumentada
-            const threadPitch = 0.15; // Paso de rosca definido
-            
-            for (let i = 0; i < innerPositions.count; i++) {
-                const y = innerPositions.getY(i);
-                const angle = Math.atan2(
-                    innerPositions.getZ(i), 
-                    innerPositions.getX(i)
-                );
+            teamMembers.forEach(member => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'member-card';
+                memberCard.innerHTML = `
+                    <img src="${member.image}" alt="${member.name}" class="member-image">
+                    <div class="member-info">
+                        <h3 class="member-name">${member.name}</h3>
+                        <span class="member-position">${member.position}</span>
+                        <p class="member-bio">${member.bio.substring(0, 150)}...</p>
+                        <button class="view-btn" data-id="${member.id}">Ver Perfil</button>
+                    </div>
+                `;
                 
-                if (Math.abs(y) < height/2) {
-                    // Rosca más precisa con perfil triangular
-                    const threadPos = (y + height/2) / threadPitch;
-                    const threadPhase = (threadPos % 1) * Math.PI * 2;
-                    
-                    const threadOffset = Math.sin(threadPhase) * threadDepth;
-                    const nx = innerPositions.getX(i) * (1 + threadOffset / innerRadius);
-                    const nz = innerPositions.getZ(i) * (1 + threadOffset / innerRadius);
-                    innerPositions.setX(i, nx);
-                    innerPositions.setZ(i, nz);
-                }
-            }
-            
-            innerGeometry.computeVertexNormals();
-            
-            // Cara superior e inferior con marcas mejoradas
-            const topGeometry = new THREE.CylinderGeometry(
-                outerRadius * 0.7, 
-                outerRadius * 0.7, 
-                0.05, 
-                6
-            );
-            topGeometry.translate(0, height/2, 0);
-            
-            // Marca de profundidad en la cara superior
-            const markGeometry = new THREE.BoxGeometry(0.2, 0.02, outerRadius * 0.6);
-            markGeometry.rotateZ(Math.PI / 2);
-            markGeometry.translate(0, height/2 + 0.025, 0);
-            
-            // Crear mallas
-            const outerNut = new THREE.Mesh(outerGeometry, steelMaterial);
-            const innerNut = new THREE.Mesh(innerGeometry, threadedMaterial);
-            const topMark = new THREE.Mesh(topGeometry, steelMaterial);
-            const depthMark = new THREE.Mesh(markGeometry, steelMaterial);
-            
-            // Grupo de tuerca
-            const nut = new THREE.Group();
-            nut.add(outerNut);
-            nut.add(innerNut);
-            nut.add(topMark);
-            nut.add(depthMark);
-            
-            // Configurar sombras
-            nut.traverse(obj => { 
-                if (obj.isMesh) {
-                    obj.castShadow = true;
-                    obj.receiveShadow = true;
-                    obj.userData.selectable = true;
-                    obj.userData.name = "Tuerca hexagonal M10";
-                }
+                membersGrid.appendChild(memberCard);
             });
-            
-            return nut;
-        }
-        
-        // 9. Modelado avanzado de tornillo con rosca real mejorada
-        function createScrew() {
-            const radius = 0.5; // Aumentado para coincidir con la tuerca
-            const height = 3;
-            const headRadius = 0.9; // Aumentado proporcionalmente
-            const headHeight = 0.5; // Aumentado proporcionalmente
-            const segments = 64; // Más segmentos para mejor calidad
-            
-            // Cuerpo del tornillo con rosca mejorada
-            const screwGeometry = new THREE.CylinderGeometry(
-                radius, 
-                radius, 
-                height, 
-                segments, 
-                4, 
-                true
-            );
-            
-            // Crear rosca mejorada con perfil más preciso
-            const positions = screwGeometry.attributes.position;
-            const threadDepth = 0.07; // Profundidad de rosca aumentada
-            const threadWidth = 0.15; // Ancho de rosca definido
-            const threadPitch = 0.15; // Paso de rosca (debe coincidir con la tuerca)
-            
-            for (let i = 0; i < positions.count; i++) {
-                const y = positions.getY(i);
-                const angle = Math.atan2(positions.getZ(i), positions.getX(i));
-                
-                if (y < height/2 - 0.2) { // No aplicar rosca cerca de la cabeza
-                    const threadPos = (y + height/2) / threadPitch;
-                    const threadPhase = (threadPos % 1) * Math.PI * 2;
-                    
-                    // Perfil triangular de la rosca
-                    let threadOffset = 0;
-                    if (threadPhase < Math.PI) {
-                        threadOffset = Math.sin(threadPhase) * threadDepth;
-                    }
-                    
-                    const nx = positions.getX(i) * (1 + threadOffset / radius);
-                    const nz = positions.getZ(i) * (1 + threadOffset / radius);
-                    positions.setX(i, nx);
-                    positions.setZ(i, nz);
-                }
-            }
-            
-            screwGeometry.computeVertexNormals();
-            
-            // Cabeza del tornillo con ranuras mejoradas
-            const headGeometry = new THREE.CylinderGeometry(
-                headRadius, 
-                headRadius * 0.95, // Bisel leve
-                headHeight, 
-                6
-            );
-            
-            // Ranura en la cabeza más realista
-            const slotDepth = 0.2;
-            const slotGeometry = new THREE.BoxGeometry(
-                headRadius * 1.8, // Más ancha
-                slotDepth, 
-                headHeight * 0.6 // Más estrecha
-            );
-            const slotGeometry2 = slotGeometry.clone();
-            slotGeometry.rotateZ(Math.PI / 2);
-            slotGeometry2.rotateZ(Math.PI / 2);
-            
-            // Bisel en la punta del tornillo
-            const tipGeometry = new THREE.ConeGeometry(
-                radius * 0.8, 
-                0.4, 
-                32
-            );
-            tipGeometry.translate(0, -height/2 - 0.2, 0);
-            tipGeometry.rotateX(Math.PI);
-            
-            // Crear mallas
-            const screw = new THREE.Mesh(screwGeometry, threadedMaterial);
-            const head = new THREE.Mesh(headGeometry, steelMaterial);
-            const slot1 = new THREE.Mesh(slotGeometry, steelMaterial);
-            const slot2 = new THREE.Mesh(slotGeometry2, steelMaterial);
-            const tip = new THREE.Mesh(tipGeometry, threadedMaterial);
-            
-            // Posicionar elementos
-            head.position.y = height/2 + headHeight/2;
-            slot1.position.set(0, height/2 + headHeight/2, 0);
-            slot2.position.set(0, height/2 + headHeight/2, 0);
-            
-            // Grupo de tornillo
-            const screwGroup = new THREE.Group();
-            screwGroup.add(screw);
-            screwGroup.add(head);
-            screwGroup.add(slot1);
-            screwGroup.add(slot2);
-            screwGroup.add(tip);
-            
-            // Configurar sombras y propiedades
-            screwGroup.traverse(obj => { 
-                if (obj.isMesh) {
-                    obj.castShadow = true;
-                    obj.receiveShadow = true;
-                    obj.userData.selectable = true;
-                    obj.userData.name = "Tornillo hexagonal M10";
-                }
-            });
-            
-            return screwGroup;
-        }
-        
-        // 10. Crear modelos
-        const nut = createNut();
-        const screw = createScrew();
-        
-        // Posicionar modelos
-        nut.position.set(-2, 1, 0);
-        screw.position.set(2, 1, 0);
-        
-        // Añadir a la escena
-        scene.add(nut);
-        scene.add(screw);
-        
-        // 11. Escenario profesional
-        const createWorkbench = () => {
-            // Base principal
-            const benchGeometry = new THREE.BoxGeometry(10, 0.5, 6);
-            const benchMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0x333333,
-                roughness: 0.7,
-                metalness: 0.1
-            });
-            const bench = new THREE.Mesh(benchGeometry, benchMaterial);
-            bench.position.y = -0.25;
-            bench.receiveShadow = true;
-            
-            // Herramientas decorativas
-            const tools = new THREE.Group();
-            
-            // Llave inglesa
-            const wrenchHandle = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.1, 0.1, 2, 6),
-                steelMaterial
-            );
-            wrenchHandle.rotation.z = Math.PI / 2;
-            wrenchHandle.position.set(-1, 0.1, 1.5);
-            
-            const wrenchHead = new THREE.Mesh(
-                new THREE.BoxGeometry(0.3, 0.4, 0.2),
-                steelMaterial
-            );
-            wrenchHead.position.set(-2, 0.1, 1.5);
-            
-            tools.add(wrenchHandle);
-            tools.add(wrenchHead);
-            
-            // Tornillos adicionales
-            for (let i = 0; i < 3; i++) {
-                const smallScrew = createScrew();
-                smallScrew.scale.set(0.4, 0.4, 0.4);
-                smallScrew.position.set(
-                    -3 + i * 0.5,
-                    0.1,
-                    -1.5 + i * 0.3
-                );
-                smallScrew.rotation.y = Math.PI / 4 * i;
-                tools.add(smallScrew);
-            }
-            
-            // Grupo del banco de trabajo
-            const workbench = new THREE.Group();
-            workbench.add(bench);
-            workbench.add(tools);
-            
-            // Configurar sombras
-            workbench.traverse(obj => {
-                if (obj.isMesh) {
-                    obj.castShadow = true;
-                    obj.receiveShadow = true;
-                }
-            });
-            
-            return workbench;
-        };
-        
-        const workbench = createWorkbench();
-        scene.add(workbench);
-        
-        // 12. Efectos de selección
-        const selectedObjects = [];
-        const tooltip = document.getElementById('tooltip');
-        
-        renderer.domElement.addEventListener('mousemove', (event) => {
-            const mouse = new THREE.Vector2(
-                (event.clientX / window.innerWidth) * 2 - 1,
-                -(event.clientY / window.innerHeight) * 2 + 1
-            );
-            
-            const raycaster = new THREE.Raycaster();
-            raycaster.setFromCamera(mouse, camera);
-            
-            const intersects = raycaster.intersectObjects(scene.children, true);
-            
-            if (intersects.length > 0 && intersects[0].object.userData.selectable) {
-                tooltip.style.opacity = '1';
-                tooltip.textContent = intersects[0].object.userData.name || "Objeto 3D";
-                tooltip.style.left = `${event.clientX + 15}px`;
-                tooltip.style.top = `${event.clientY + 15}px`;
-                
-                outlinePass.selectedObjects = [intersects[0].object];
-            } else {
-                tooltip.style.opacity = '0';
-                outlinePass.selectedObjects = [];
-            }
-        });
-        
-        // 13. Animaciones avanzadas mejoradas
-        let rotateEnabled = true;
-        let assemblyMode = false;
-        let wireframeMode = false;
-        let debugMode = false;
-        
-        // Animación de ensamblaje mejorada
-        const assembleAnimation = () => {
-            return new Promise((resolve) => {
-                const startTime = Date.now();
-                const duration = 2500; // Más tiempo para mejor visualización
-                
-                const nutStartPos = nut.position.clone();
-                const screwStartPos = screw.position.clone();
-                
-                const targetPos = new THREE.Vector3(0, 1, 0);
-                
-                // Almacenar rotación inicial para animación de roscado
-                const initialNutRotation = nut.rotation.clone();
-                const initialScrewRotation = screw.rotation.clone();
-                
-                const animate = () => {
-                    const elapsed = Date.now() - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    
-                    // Movimiento de la tuerca (más suave)
-                    nut.position.x = THREE.MathUtils.lerp(
-                        nutStartPos.x, 
-                        -1, 
-                        THREE.MathUtils.smoothstep(progress, 0, 0.5)
-                    );
-                    
-                    // Movimiento del tornillo (más suave)
-                    screw.position.x = THREE.MathUtils.lerp(
-                        screwStartPos.x, 
-                        targetPos.x, 
-                        THREE.MathUtils.smoothstep(progress, 0, 0.5)
-                    );
-                    
-                    // Rotación sincronizada del tornillo y tuerca durante el ensamblaje
-                    if (progress < 0.8) {
-                        const rotationProgress = THREE.MathUtils.smoothstep(progress, 0.3, 0.8);
-                        
-                        // Tornillo gira en sentido horario
-                        screw.rotation.y = initialScrewRotation.y + rotationProgress * Math.PI * 4;
-                        
-                        // Tuerca gira en sentido antihorario (más lento)
-                        nut.rotation.y = initialNutRotation.y - rotationProgress * Math.PI * 2;
-                        
-                        // Movimiento vertical del tornillo (atornillado)
-                        screw.position.y = targetPos.y - (1 - progress * 1.25) * 1.5;
-                    }
-                    
-                    // Ajuste final preciso
-                    if (progress > 0.9) {
-                        screw.position.y = targetPos.y;
-                        nut.position.x = -0.5; // Posición final ajustada
-                    }
-                    
-                    if (progress < 1) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        // Asegurar alineación perfecta al final
-                        screw.position.copy(targetPos);
-                        nut.position.set(-0.5, 1, 0);
-                        resolve();
-                    }
-                };
-                
-                animate();
-            });
-        };
-        
-        // 14. Control de UI
-        document.getElementById('rotate-btn').addEventListener('click', () => {
-            rotateEnabled = !rotateEnabled;
-            const btn = document.getElementById('rotate-btn');
-            btn.innerHTML = rotateEnabled ? 
-                '<i class="fas fa-sync-alt"></i> Rotación' : 
-                '<i class="fas fa-pause"></i> Pausada';
-        });
-        
-        document.getElementById('assembly-btn').addEventListener('click', async () => {
-            assemblyMode = !assemblyMode;
-            const btn = document.getElementById('assembly-btn');
-            
-            if (assemblyMode) {
-                btn.classList.add('pulse-animation');
-                await assembleAnimation();
-                btn.innerHTML = '<i class="fas fa-undo"></i> Resetear';
-            } else {
-                btn.classList.remove('pulse-animation');
-                nut.position.set(-2, 1, 0);
-                screw.position.set(2, 1, 0);
-                nut.rotation.set(0, 0, 0);
-                screw.rotation.set(0, 0, 0);
-                btn.innerHTML = '<i class="fas fa-puzzle-piece"></i> Ensamblar';
-            }
-        });
-        
-        document.getElementById('wireframe-btn').addEventListener('click', () => {
-            wireframeMode = !wireframeMode;
-            scene.traverse(obj => {
-                if (obj.isMesh) {
-                    obj.material.wireframe = wireframeMode;
-                    if (wireframeMode) {
-                        obj.material.wireframeLinewidth = 1;
-                    }
-                }
-            });
-            
-            const btn = document.getElementById('wireframe-btn');
-            btn.innerHTML = wireframeMode ? 
-                '<i class="fas fa-square"></i> Sólido' : 
-                '<i class="fas fa-border-style"></i> Wireframe';
-        });
-        
-        document.getElementById('debug-btn').addEventListener('click', () => {
-            debugMode = !debugMode;
-            
-            if (debugMode) {
-                const lightHelper = new THREE.DirectionalLightHelper(directionalLight);
-                scene.add(lightHelper);
-                
-                const shadowHelper = new THREE.CameraHelper(directionalLight.shadow.camera);
-                shadowHelper.visible = false;
-                scene.add(shadowHelper);
-                
-                const axesHelper = new THREE.AxesHelper(3);
-                scene.add(axesHelper);
-            } else {
-                scene.children.forEach(child => {
-                    if (child.isHelper) {
-                        scene.remove(child);
-                    }
+
+            // Add event listeners to buttons
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const memberId = parseInt(e.target.getAttribute('data-id'));
+                    showMemberDetails(memberId);
                 });
-            }
-            
-            const btn = document.getElementById('debug-btn');
-            btn.innerHTML = debugMode ? 
-                '<i class="fas fa-eye-slash"></i> Ocultar Debug' : 
-                '<i class="fas fa-bug"></i> Debug';
-        });
-        
-        // 15. Bucle de animación mejorado
-        const clock = new THREE.Clock();
-        
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            const delta = clock.getDelta();
-            
-            // Rotación automática mejorada
-            if (rotateEnabled && !assemblyMode) {
-                nut.rotation.y += 0.3 * delta;
-                screw.rotation.y -= 0.4 * delta;
-                screw.position.y = 1 + Math.sin(Date.now() * 0.001) * 0.2;
-                
-                // Pequeña rotación oscilante para mejor efecto
-                nut.rotation.x = Math.sin(Date.now() * 0.001) * 0.1;
-                screw.rotation.x = Math.cos(Date.now() * 0.001) * 0.1;
-            }
-            
-            controls.update();
-            
-            // Renderizar con post-processing
-            composer.render();
+            });
         }
-        
-        // 16. Manejo de redimensionamiento
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            composer.setSize(window.innerWidth, window.innerHeight);
-            fxaaPass.uniforms['resolution'].value.set(
-                1 / window.innerWidth, 
-                1 / window.innerHeight
-            );
+
+        // Show member details in modal
+        function showMemberDetails(memberId) {
+            const member = teamMembers.find(m => m.id === memberId);
+            if (!member) return;
+
+            modalBody.innerHTML = `
+                <img src="${member.image}" alt="${member.name}" class="modal-image">
+                <div class="modal-info">
+                    <h2 class="modal-name">${member.name}</h2>
+                    <p class="modal-position">${member.position}</p>
+                    
+                    <div class="personal-data">
+                        <div class="data-item">
+                            <span class="data-label">Cédula</span>
+                            <span class="data-value">${member.cedula}</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Fecha de Nacimiento</span>
+                            <span class="data-value">${member.fechaNacimiento}</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Teléfono</span>
+                            <span class="data-value">${member.telefono}</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Sección</span>
+                            <span class="data-value">${member.seccion}</span>
+                        </div>
+                    </div>
+                    
+                    <p class="modal-bio">${member.bio}</p>
+                    
+                    <div class="social-links">
+                        ${member.social.map(social => `
+                            <a href="${social.url}" class="social-link" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-${social.icon}"></i>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            memberModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeMemberModal() {
+            memberModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners
+        closeModal.addEventListener('click', closeMemberModal);
+        memberModal.addEventListener('click', (e) => {
+            if (e.target === memberModal) {
+                closeMemberModal();
+            }
         });
-        
-        // Iniciar animación
-        animate();
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTeamMembers();
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMemberModal();
+                }
+            });
+        });
     </script>
 </body>
 </html>
